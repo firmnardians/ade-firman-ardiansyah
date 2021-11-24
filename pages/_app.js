@@ -1,7 +1,15 @@
-import '../styles/globals.css'
+import CategoryContextContainer from '../context/categories';
+import ProductContextContainer from '../context/data';
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+	return (
+		<CategoryContextContainer>
+			<ProductContextContainer>
+				<Component {...pageProps} />
+			</ProductContextContainer>
+		</CategoryContextContainer>
+	);
 }
 
-export default MyApp
+export default MyApp;
