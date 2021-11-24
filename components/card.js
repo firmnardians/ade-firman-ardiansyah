@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import styled from 'styled-components';
+import { handleNumber } from '../helper';
 
 export default function Card({ data }) {
 	const discount = data.discount / 100;
@@ -17,13 +18,13 @@ export default function Card({ data }) {
 				<WrapPrice>
 					<TitlePrice>Normal Price</TitlePrice>
 
-					<Price>Rp {data.price}</Price>
+					<Price>{handleNumber(data.price)}</Price>
 				</WrapPrice>
 
 				<WrapPrice>
 					<TitlePrice>Discount Price</TitlePrice>
 
-					<Price>{data.discount !== 0 ? `Rp ${discount_price}` : '-'} </Price>
+					<Price>{data.discount !== 0 ? `${handleNumber(discount_price)}` : '-'} </Price>
 				</WrapPrice>
 
 				<SellerName>Seller: {data.seller_name}</SellerName>

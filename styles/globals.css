@@ -92,3 +92,26 @@ button:disabled {
 	opacity: 0.3;
 	cursor: no-drop;
 }
+.disabled-mobile {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	background: #ffffff;
+	display: none;
+}
+
+.center-div {
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width: 800px) {
+	.disabled-mobile {
+		display: block;
+	}
+}

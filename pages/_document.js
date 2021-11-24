@@ -16,6 +16,12 @@ export default class MyDocument extends Document {
 				<body>
 					<Main />
 					<NextScript />
+
+					<div className='disabled-mobile'>
+						<div className='center-div'>
+							<p className='text-center'>Ups. Tidak responsive, ganti menggunakan desktop untuk melihatnya.</p>
+						</div>
+					</div>
 				</body>
 			</Html>
 		);

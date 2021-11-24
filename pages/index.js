@@ -4,6 +4,7 @@ import Container from '../components/container';
 import Pagination from '../components/pagination';
 import { ProductContext } from '../context/data';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 export default function Home() {
 	const { products, isLoading, dispatch } = useContext(ProductContext);
@@ -38,6 +39,10 @@ export default function Home() {
 
 	return (
 		<Container>
+			<Head>
+				<title>Dagang</title>
+			</Head>
+
 			<div className='pt40 pb40'>
 				{isLoading ? (
 					<div className='p20'>
