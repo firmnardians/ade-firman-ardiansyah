@@ -2,10 +2,6 @@
 
 Marketplace sample with React, Next.js and Styled Component.
 
-## Demo
-
-Live on Vercel
-
 ## Installation
 
 Clone repository
