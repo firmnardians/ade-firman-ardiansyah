@@ -10,23 +10,24 @@ export default function Home() {
 	const router = useRouter();
 
 	function handlePagination(type) {
-		const { page } = router.query;
+		const { page, category } = router.query;
 
 		const numPage = type === 'prev' ? Number(page) - 1 : Number(page) + 1;
 
 		if (page !== undefined) {
 			if (numPage > 0) {
 				if (type === 'prev') {
-					dispatch.getProducts(String(numPage));
+					category !== undefined ? dispatch.getProducts(String(numPage), category) : dispatch.getProducts(String(numPage));
 				} else {
-					dispatch.getProducts(String(numPage));
+					category !== undefined ? dispatch.getProducts(String(numPage), category) : dispatch.getProducts(String(numPage));
 				}
 
-				router.push(`/?page=${numPage}`);
+				category !== undefined ? router.push(`/?category=${category}&page=${numPage}`) : router.push(`/?page=${numPage}`);
 			}
 		} else {
 			if (type === 'next') {
-				dispatch.getProducts('2');
+				category !== undefined ? dispatch.getProducts('2', category) : dispatch.getProducts('2');
+
 				router.push('/?page=2');
 			}
 		}
@@ -42,7 +43,7 @@ export default function Home() {
 					<div className='p20'>
 						<p className='text-center'>Loading...</p>
 					</div>
-				) : (
+				) : products.length > 0 ? (
 					<div className='row'>
 						{products.map((item, i) => {
 							return (
@@ -52,9 +53,15 @@ export default function Home() {
 							);
 						})}
 					</div>
+				) : (
+					<div className='pt40'>
+						<p className='text-center'>Tidak ada products.</p>
+					</div>
 				)}
 
-				{!isLoading && <Pagination disabledPrev={isDisabledPrev} disabledNext={isDisabledNext} handleClick={handlePagination} />}
+				{!isLoading && products.length > 0 && (
+					<Pagination disabledPrev={isDisabledPrev} disabledNext={isDisabledNext} handleClick={handlePagination} />
+				)}
 			</div>
 		</Container>
 	);

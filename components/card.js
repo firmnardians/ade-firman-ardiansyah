@@ -15,10 +15,18 @@ export default function Card({ data }) {
 			<DetailProduct>
 				<TitleProduct>{data.product_name}</TitleProduct>
 				<WrapPrice>
-					<TitlePrice>Price</TitlePrice>
+					<TitlePrice>Normal Price</TitlePrice>
 
-					<Price>Rp {discount_price}</Price>
+					<Price>Rp {data.price}</Price>
 				</WrapPrice>
+
+				<WrapPrice>
+					<TitlePrice>Discount Price</TitlePrice>
+
+					<Price>{data.discount !== 0 ? `Rp ${discount_price}` : '-'} </Price>
+				</WrapPrice>
+
+				<SellerName>Seller: {data.seller_name}</SellerName>
 
 				<TitleCity>{data.city_name}</TitleCity>
 			</DetailProduct>
@@ -79,4 +87,11 @@ const TitleCity = styled.p`
 	margin: 0px;
 	font-size: 12px;
 	color: grey;
+`;
+
+const SellerName = styled.p`
+	margin: 0px;
+	font-size: 12px;
+	color: #000000;
+	padding-bottom: 5px;
 `;
